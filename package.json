@@ -1,0 +1,18 @@
+
+{
+  "name": "cca2-task-manager",
+  "version": "2.0.0",
+  "description": "TaskFlow - a task manager for CCA 2 CI/CD deployment",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --check server.js"
+  },
+  "keywords": [
+    "task-manager",
+    "nodejs",
+    "devops",
+    "cicd"
+  ],
+  "license": "MIT"
+}
