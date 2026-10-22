@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = 'cca2-task-manager'
+        IMAGE_NAME = 'shagunbhati16/cca2-task-manager'
     }
 
     stages {
@@ -46,11 +46,35 @@ pipeline {
                 echo 'Docker image built and verified successfully.'
             }
         }
+
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-creds',
+                        usernameVariable: 'DOCKERHUB_USERNAME',
+                        passwordVariable: 'DOCKERHUB_TOKEN'
+                    )
+                ]) {
+                    sh '''
+                        set +x
+                        echo "$DOCKERHUB_TOKEN" | docker login \
+                          --username "$DOCKERHUB_USERNAME" \
+                          --password-stdin
+
+                        docker push ${IMAGE_NAME}:${BUILD_NUMBER}
+                        docker push ${IMAGE_NAME}:latest
+
+                        docker logout
+                    '''
+                }
+            }
+        }
     }
 
     post {
         success {
-            echo 'CI pipeline completed successfully!'
+            echo 'CI pipeline completed and Docker image published successfully!'
         }
         failure {
             echo 'Pipeline failed. Check the stage logs above.'
