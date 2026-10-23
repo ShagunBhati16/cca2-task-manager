@@ -109,7 +109,7 @@ pipeline {
 
                         kubectl --kubeconfig="$KUBECONFIG_FILE" \
                             set image deployment/taskflow \
-                            taskflow="$IMAGE_NAME:$BUILD_NUMBER" \
+                            cca2-task-manager="$IMAGE_NAME:$BUILD_NUMBER" \
                             -n default
 
                         kubectl --kubeconfig="$KUBECONFIG_FILE" \
