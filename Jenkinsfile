@@ -76,7 +76,7 @@ pipeline {
             steps {
                 withCredentials([
                     file(
-                        credentialsId: 'kubeconfig-file',
+                        credentialsId: 'kubeconfig-file-v2',
                         variable: 'KUBECONFIG_FILE'
                     )
                 ]) {
@@ -98,7 +98,7 @@ pipeline {
             steps {
                 withCredentials([
                     file(
-                        credentialsId: 'kubeconfig-file',
+                        credentialsId: 'kubeconfig-file-v2',
                         variable: 'KUBECONFIG_FILE'
                     )
                 ]) {
