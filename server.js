@@ -417,7 +417,7 @@ const html = `<!DOCTYPE html>
 
     <section class="welcome">
       <div>
-        <h2>Make today count.</h2>
+        <h2>Make today count.-CI/CD Updated</h2>
         <p>Plan your work, track your progress, and get things done.</p>
       </div>
       <button class="button button-light" id="clearCompleted" type="button">
