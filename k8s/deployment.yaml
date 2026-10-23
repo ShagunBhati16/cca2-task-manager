@@ -1,0 +1,24 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskflow
+  labels:
+    app: taskflow
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: taskflow
+  template:
+    metadata:
+      labels:
+        app: taskflow
+    spec:
+      containers:
+        - name: cca2-task-manager
+          image: shagunbhati16/cca2-task-manager:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
